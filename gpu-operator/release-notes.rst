@@ -206,6 +206,7 @@ Post-Release Documentation Updates
 * Added support for Kubernetes 1.37 to the :ref:`bare-metal`, :ref:`cloud service providers <cloud-service-providers>`, and KubeVirt and OpenShift Virtualization tables.
 * Corrected the ``kata-deploy`` Helm install on the :doc:`Kata Containers with GPU Operator <deploy-kata-containers>` page.
   The previous ``--set`` used a GPU Operator chart key that the ``kata-deploy`` chart ignores.
+* Enabled ``kata-deploy`` NFD and disabled the GPU Operator bundled NFD on the :doc:`Kata Containers with GPU Operator <deploy-kata-containers>` page, while keeping NVIDIA node feature rules.
 
 
 ----

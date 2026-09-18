@@ -321,7 +321,7 @@ The minimum required version is ${kata_version}.
 
       $ helm install kata-deploy "${CHART}" \
          --namespace kata-system --create-namespace \
-         --set node-feature-discovery.enabled=false \
+         --set node-feature-discovery.enabled=true \
          -f kata-nvidia-gpu-values.yaml \
          --version "${VERSION}"
 
@@ -342,8 +342,8 @@ The minimum required version is ${kata_version}.
    .. note::
 
       Both ``kata-deploy`` and the GPU Operator can deploy Node Feature Discovery (NFD).
-      The install command disables the NFD deployment by ``kata-deploy``.
-      The GPU Operator will deploy and manage NFD in the next step.
+      The install command enables the NFD deployment by ``kata-deploy``.
+      The GPU Operator install turns its bundled NFD off and still applies NVIDIA node feature rules.
 
    .. note::
 
@@ -446,7 +446,7 @@ Install the NVIDIA GPU Operator and configure it to deploy Kata Container compon
          --version=${version} \
          --set sandboxWorkloads.enabled=true \
          --set sandboxWorkloads.mode=kata \
-         --set nfd.enabled=true \
+         --set nfd.enabled=false \
          --set nfd.nodefeaturerules=true
 
    *Example Output:*
@@ -476,9 +476,6 @@ Install the NVIDIA GPU Operator and configure it to deploy Kata Container compon
    .. code-block:: output
 
       NAME                                                              READY   STATUS    RESTARTS   AGE
-      gpu-operator-1766001809-node-feature-discovery-gc-75776475sxzkp   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-master-6869lxq2g   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-worker-mh4cv       1/1     Running   0          86s
       gpu-operator-f48fd66b-vtfrl                                       1/1     Running   0          86s
       nvidia-cc-manager-7z74t                                           1/1     Running   0          61s
       nvidia-kata-sandbox-device-plugin-daemonset-d5rvg                 1/1     Running   0          30s
@@ -548,7 +545,7 @@ The following example installs the GPU Operator with both ``P_GPU_ALIAS`` and ``
       --version=${version} \
       --set sandboxWorkloads.enabled=true \
       --set sandboxWorkloads.mode=kata \
-      --set nfd.enabled=true \
+      --set nfd.enabled=false \
       --set nfd.nodefeaturerules=true \
       --set kataSandboxDevicePlugin.env[0].name=P_GPU_ALIAS \
       --set kataSandboxDevicePlugin.env[0].value="" \
