@@ -79,6 +79,7 @@ Post-Release Documentation Updates
 * Restored ``--wait`` on the detailed ``kata-deploy`` install command and attributed the disabled NFD deployment to the values file.
 * Corrected the NFD setting in :file:`samples/kata-nvidia-gpu-values.yaml`.
   The sample used a key that the ``kata-deploy`` chart ignores, so the chart default kept NFD disabled instead of the sample.
+* Enabled the ``kata-deploy`` NFD subchart and turned off the GPU Operator bundled NFD, while keeping NVIDIA node feature rules.
 
 ----
 

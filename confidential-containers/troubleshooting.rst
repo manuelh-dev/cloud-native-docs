@@ -68,9 +68,6 @@ Use this section to collect GPU Operator pod logs when an operand is not running
    .. code-block:: output
 
       NAME                                                              READY   STATUS    RESTARTS   AGE
-      gpu-operator-1766001809-node-feature-discovery-gc-75776475sxzkp   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-master-6869lxq2g   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-worker-mh4cv       1/1     Running   0          86s
       gpu-operator-f48fd66b-vtfrl                                       1/1     Running   0          86s
       nvidia-cc-manager-7z74t                                           1/1     Running   0          61s
       nvidia-kata-sandbox-device-plugin-daemonset-d5rvg                 1/1     Running   0          30s

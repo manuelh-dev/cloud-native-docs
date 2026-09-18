@@ -6,13 +6,13 @@ debug: false
 
 deploymentMode: daemonset
 
-# Disable Node Feature Discovery (NFD) deployment by kata-deploy.
+# Enable Node Feature Discovery (NFD) deployment by kata-deploy.
 # Both kata-deploy and the GPU Operator can deploy NFD. This reference
-# architecture relies on the NFD instance that the GPU Operator deploys
-# and manages, so the kata-deploy NFD subchart is turned off to avoid a
-# duplicate, conflicting deployment.
+# architecture uses the NFD instance that kata-deploy manages. The GPU
+# Operator install turns its bundled NFD off and still applies NVIDIA
+# node feature rules to the kata-deploy NFD.
 node-feature-discovery:
-  enabled: false
+  enabled: true
 
 # Install the nydus snapshotter on each node alongside containerd.
 # The confidential -snp and -tdx shims below use nydus to pull container

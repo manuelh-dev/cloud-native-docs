@@ -167,7 +167,7 @@ Install the NVIDIA GPU Operator
          --set sandboxWorkloads.enabled=true \
          --set sandboxWorkloads.defaultWorkload=vm-passthrough \
          --set sandboxWorkloads.mode=kata \
-         --set nfd.enabled=true \
+         --set nfd.enabled=false \
          --set nfd.nodefeaturerules=true \
          --version=${gpu_operator_version}
 
@@ -197,9 +197,6 @@ Install the NVIDIA GPU Operator
    .. code-block:: output
 
       NAME                                                              READY   STATUS    RESTARTS   AGE
-      gpu-operator-1766001809-node-feature-discovery-gc-75776475sxzkp   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-master-6869lxq2g   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-worker-mh4cv       1/1     Running   0          86s
       gpu-operator-f48fd66b-vtfrl                                       1/1     Running   0          86s
       nvidia-cc-manager-7z74t                                           1/1     Running   0          61s
       nvidia-kata-sandbox-device-plugin-daemonset-d5rvg                 1/1     Running   0          30s

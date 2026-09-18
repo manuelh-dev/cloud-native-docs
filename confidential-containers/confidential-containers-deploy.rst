@@ -202,8 +202,8 @@ The minimum required version is ${kata_version}.
    .. note::
 
       Both ``kata-deploy`` and the GPU Operator can deploy Node Feature Discovery (NFD).
-      The values file disables the NFD deployment by ``kata-deploy``.
-      The GPU Operator will deploy and manage NFD in the next step.
+      The values file enables the NFD deployment by ``kata-deploy``.
+      The GPU Operator install turns its bundled NFD off and still applies NVIDIA node feature rules.
 
 #. Verify that the ``kata-deploy`` pod is running:
 
@@ -301,7 +301,7 @@ For more details on each of the GPU Operator components, refer to the :ref:`GPU 
          nvidia/gpu-operator \
          --set sandboxWorkloads.enabled=true \
          --set sandboxWorkloads.mode=kata \
-         --set nfd.enabled=true \
+         --set nfd.enabled=false \
          --set nfd.nodefeaturerules=true \
          --version=${gpu_operator_version}
 
@@ -333,9 +333,6 @@ For more details on each of the GPU Operator components, refer to the :ref:`GPU 
    .. code-block:: output
 
       NAME                                                              READY   STATUS    RESTARTS   AGE
-      gpu-operator-1766001809-node-feature-discovery-gc-75776475sxzkp   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-master-6869lxq2g   1/1     Running   0          86s
-      gpu-operator-1766001809-node-feature-discovery-worker-mh4cv       1/1     Running   0          86s
       gpu-operator-f48fd66b-vtfrl                                       1/1     Running   0          86s
       nvidia-cc-manager-7z74t                                           1/1     Running   0          61s
       nvidia-kata-sandbox-device-plugin-daemonset-d5rvg                 1/1     Running   0          30s
@@ -443,7 +440,7 @@ The following example installs the GPU Operator with both ``P_GPU_ALIAS`` and ``
       nvidia/gpu-operator \
       --set sandboxWorkloads.enabled=true \
       --set sandboxWorkloads.mode=kata \
-      --set nfd.enabled=true \
+      --set nfd.enabled=false \
       --set nfd.nodefeaturerules=true \
       --set kataSandboxDevicePlugin.env[0].name=P_GPU_ALIAS \
       --set kataSandboxDevicePlugin.env[0].value="" \
